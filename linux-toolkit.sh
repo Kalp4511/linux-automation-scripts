@@ -8,7 +8,7 @@ echo "==========================================="
 echo
 echo "1. System Information"
 echo "2. Disk Usage Monitor"
-echo "3. Backup Manager"
+echo "3. Memory Usage"
 echo "4. Network Diagnostics"
 echo "5. User Audit"
 echo "6. Exit"
