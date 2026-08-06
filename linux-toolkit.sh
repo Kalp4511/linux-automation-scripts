@@ -21,7 +21,7 @@ case $choice in
         bash scripts/system_info.sh
         ;;
     2)
-        echo "Coming Soon"
+        bash scripts/monitoring/disk_usage.sh
         ;;
     3)
         echo "Coming Soon"
