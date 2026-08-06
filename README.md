@@ -1,29 +1,27 @@
 # Linux Automation Scripts
 
-A collection of Bash scripts developed while learning Linux system administration and cybersecurity fundamentals.
+A collection of practical Bash automation utilities built while learning Linux system administration and cybersecurity.
 
-This repository demonstrates practical Linux command-line skills, shell scripting, automation, and basic system administration tasks.
-
----
-
-## Features
-
-- System information collection
-- Automated file backup
-- Disk usage monitoring
-- Network connectivity testing
-- User verification
-- Cleanup automation
-- Cron scheduling examples
+The goal of this repository is to create real-world Linux automation tools instead of small practice scripts. Every utility solves a practical system administration problem and is developed incrementally with proper Git history and documentation.
 
 ---
 
-## Tech Stack
+## Current Features
+
+- Display detailed Linux system information
+- Organized project structure
+- Professional Bash scripting practices
+- Modular repository for future automation utilities
+
+---
+
+## Technologies
 
 - Bash
 - Linux
-- Cron
-- Shell Utilities
+- Shell Scripting
+- Git
+- GitHub
 
 ---
 
@@ -32,56 +30,55 @@ This repository demonstrates practical Linux command-line skills, shell scriptin
 ```
 linux-automation-scripts/
 │
-├── scripts/
-├── docs/
-├── screenshots/
-├── README.md
 ├── LICENSE
-└── .gitignore
+├── README.md
+├── docs/
+│   └── project-roadmap.md
+├── assets/
+└── scripts/
+    ├── monitoring/
+    ├── networking/
+    ├── automation/
+    ├── security/
+    └── system_info.sh
 ```
 
 ---
 
-## Scripts
+## Current Utility
 
-| Script | Description |
-|---------|-------------|
-| system_info.sh | Displays system information |
-| backup.sh | Creates compressed backups |
-| disk_usage.sh | Monitors filesystem usage |
-| ping_monitor.sh | Checks network connectivity |
-| user_check.sh | Verifies user existence |
-| cleanup.sh | Removes temporary files |
-| welcome.sh | Demonstrates Bash variables and user input |
+### system_info.sh
 
----
+Displays important Linux system information including:
 
-## Learning Outcomes
-
-Through this project, I practiced:
-
-- Bash scripting
-- Variables
-- Conditional statements
-- Loops
-- Functions
-- Linux file permissions
-- Cron jobs
-- Linux filesystem navigation
-- Process automation
+- Hostname
+- Current User
+- Operating System
+- Kernel Version
+- Architecture
+- Current Time
+- System Uptime
+- Disk Usage
+- Memory Usage
+- IP Address
 
 ---
 
-## Future Improvements
+## Roadmap
 
-- Email notifications
-- Log file generation
-- Better error handling
-- Configuration file support
-- Colored terminal output
+Planned utilities:
+
+- Disk Usage Monitor
+- Memory Usage Monitor
+- Backup Manager
+- Log Cleanup Utility
+- Network Diagnostics
+- User Audit
+- Permission Audit
+- Security Checks
 
 ---
 
-## License
+## Author
 
-MIT License
+**Kalp Gandhi**
