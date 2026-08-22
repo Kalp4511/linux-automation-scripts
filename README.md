@@ -1,84 +1,33 @@
-# Linux Automation Scripts
+# Linux Automation & Security Toolkit
 
-A collection of practical Bash automation utilities built while learning Linux system administration and cybersecurity.
+![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
+![Bash](https://img.shields.io/badge/Bash-4EAA25?style=for-the-badge&logo=gnu-bash&logoColor=white)
+![Security](https://img.shields.io/badge/Security-Audit-blue?style=for-the-badge)
 
-The goal of this repository is to create real-world Linux automation tools instead of small practice scripts. Every utility solves a practical system administration problem and is developed incrementally with proper Git history and documentation.
+A modular, production-ready Bash toolkit designed for Linux system administration, security auditing, and automated monitoring.
 
----
+## 🚀 Features
 
-## Current Features
+* **System Dashboard:** Real-time OS, kernel, memory, and uptime metrics.
+* **Security Auditing:** Scans for world-writable files and audits active interactive system users.
+* **Resource Monitoring:** Threshold-based disk usage alerts (safely excluding virtual filesystems).
+* **Network Diagnostics:** IP routing, interface status, and DNS configuration extraction.
+* **Automated Backups:** Tar-based archive generation with dynamic pathing.
+* **Centralized Logging:** All module executions and errors are automatically timestamped and logged.
 
-- Display detailed Linux system information
-- Organized project structure
-- Professional Bash scripting practices
-- Modular repository for future automation utilities
+## 📁 Architecture
 
----
-
-## Technologies
-
-- Bash
-- Linux
-- Shell Scripting
-- Git
-- GitHub
-
----
-
-## Repository Structure
-
-```
+```text
 linux-automation-scripts/
-│
-├── LICENSE
-├── README.md
-├── docs/
-│   └── project-roadmap.md
-├── assets/
+├── config.conf            # Global variables and thresholds
+├── install.sh             # Environment setup and permission handling
+├── linux-toolkit.sh       # Main interactive CLI menu
+├── VERSION                # Release tracking
+├── logs/                  # Centralized execution logs
 └── scripts/
-    ├── monitoring/
-    ├── networking/
-    ├── automation/
-    ├── security/
-    └── system_info.sh
-```
-
----
-
-## Current Utility
-
-### system_info.sh
-
-Displays important Linux system information including:
-
-- Hostname
-- Current User
-- Operating System
-- Kernel Version
-- Architecture
-- Current Time
-- System Uptime
-- Disk Usage
-- Memory Usage
-- IP Address
-
----
-
-## Roadmap
-
-Planned utilities:
-
-- Disk Usage Monitor
-- Memory Usage Monitor
-- Backup Manager
-- Log Cleanup Utility
-- Network Diagnostics
-- User Audit
-- Permission Audit
-- Security Checks
-
----
-
-## Author
-
-**Kalp Gandhi**
+    ├── common.sh          # Reusable UI and logging functions
+    ├── system_info.sh     # System dashboard module
+    ├── automation/        # Backup and cron-related tasks
+    ├── monitoring/        # Disk and memory resource trackers
+    ├── networking/        # IP and routing diagnostics
+    └── security/          # User and file permission audits

@@ -1,41 +1,29 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
 
-# ======================================================
-# Linux Automation Scripts
-# Script: system_info.sh
-# Description: Displays essential Linux system information
-# Author: Kalp Gandhi
-# ======================================================
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+if [[ -f "$SCRIPT_DIR/common.sh" ]]; then
+    source "$SCRIPT_DIR/common.sh"
+elif [[ -f "$SCRIPT_DIR/../common.sh" ]]; then
+    source "$SCRIPT_DIR/../common.sh"
+fi
 
-print_line() {
-    printf '=%.0s' {1..55}
-    echo
-}
+print_header
+echo "          System Dashboard"
+echo "==========================================="
 
-print_line
-echo "            Linux System Information"
-print_line
+# Using parameter expansion and graceful fallbacks
+OS_NAME=$(grep PRETTY_NAME /etc/os-release 2>/dev/null | cut -d= -f2 | tr -d '"' || echo "Unknown Linux")
+UPTIME=$(uptime -p 2>/dev/null || echo "Uptime unavailable")
+IP_ADDR=$(hostname -I 2>/dev/null | awk '{print $1}' || echo "No IP found")
 
-echo "Hostname        : $(hostname)"
-echo "Current User    : $(whoami)"
-echo "Operating System: $(grep PRETTY_NAME /etc/os-release | cut -d= -f2 | tr -d '"')"
-echo "Kernel Version  : $(uname -r)"
-echo "Architecture    : $(uname -m)"
-echo "Current Time    : $(date)"
-echo "System Uptime   : $(uptime -p)"
+printf "%-20s : %s\n" "Hostname" "$(hostname)"
+printf "%-20s : %s\n" "Current User" "$(whoami)"
+printf "%-20s : %s\n" "Operating System" "$OS_NAME"
+printf "%-20s : %s\n" "Kernel Version" "$(uname -r)"
+printf "%-20s : %s\n" "Architecture" "$(uname -m)"
+printf "%-20s : %s\n" "System Uptime" "$UPTIME"
+printf "%-20s : %s\n" "Primary IP" "$IP_ADDR"
 
-echo
-echo "Disk Usage"
-df -h / | awk 'NR==2 {print "  Used: "$3" / "$2" ("$5")"}'
-
-echo
-echo "Memory Usage"
-free -h | awk 'NR==2 {print "  Used: "$3" / "$2}'
-
-echo
-echo "IP Address"
-hostname -I
-
-print_line
-echo "System information collected successfully."
-print_line
+echo "==========================================="
+log_action "System Info dashboard viewed."

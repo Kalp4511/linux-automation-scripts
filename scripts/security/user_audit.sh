@@ -1,11 +1,15 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
 
-echo "========== System Users =========="
+source scripts/common.sh
 
-cut -d: -f1 /etc/passwd
+echo "========== System User Audit =========="
 
-echo
+# Instead of just counting all users, a real audit looks for humans (users with shells)
+echo "Active Interactive Users:"
+awk -F: '$7 !~ /(nologin|false)$/ {print " - " $1 " (Home: " $6 ")"}' /etc/passwd
 
-echo "Total Users:"
+TOTAL=$(wc -l < /etc/passwd)
+echo -e "\nTotal system accounts (including daemons/services): $TOTAL"
 
-wc -l /etc/passwd
+log_action "User audit executed."

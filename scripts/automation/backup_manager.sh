@@ -1,11 +1,25 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
 
-SOURCE=$HOME
+source scripts/common.sh
 
-DESTINATION="$HOME/backups"
+SOURCE_DIR="/mnt/e/Projects/linux-automation-scripts/scripts"
+DESTINATION="${BACKUP_DIR:-$HOME/backups}"
+TIMESTAMP=$(date +%F_%H-%M-%S)
+ARCHIVE="$DESTINATION/backup_$TIMESTAMP.tar.gz"
 
-mkdir -p "$DESTINATION"
+echo "========== Backup Manager =========="
 
-tar -czf "$DESTINATION/backup_$(date +%F_%H-%M-%S).tar.gz" "$SOURCE"
+if [[ ! -d "$SOURCE_DIR" ]]; then
+    error "Source directory $SOURCE_DIR does not exist."
+    exit 1
+fi
 
-echo "Backup completed."
+if tar -czf "$ARCHIVE" "$SOURCE_DIR" 2>/dev/null; then
+    success "Backup created at $ARCHIVE"
+    log_action "Backup successful: $ARCHIVE"
+else
+    error "Backup failed."
+    log_action "Backup failed for source: $SOURCE_DIR"
+    exit 1
+fi
