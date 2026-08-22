@@ -3,7 +3,7 @@ set -euo pipefail
 
 source scripts/common.sh
 
-SOURCE_DIR="/mnt/e/Projects/linux-automation-scripts/scripts"
+SOURCE_DIR="$HOME/Documents"
 DESTINATION="${BACKUP_DIR:-$HOME/backups}"
 TIMESTAMP=$(date +%F_%H-%M-%S)
 ARCHIVE="$DESTINATION/backup_$TIMESTAMP.tar.gz"
